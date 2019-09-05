@@ -22,7 +22,7 @@ class SignIn extends React.Component {
 
   handleChange = e => {
     const { value, name } = e.target;
-
+    // [name] is here is from the <FormInput/>. It can be email or password in this case
     this.setState({ [name]: value });
   };
 
