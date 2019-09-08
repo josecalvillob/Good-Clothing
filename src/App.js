@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import HomePage from "./pages/homepage/homepage.component";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import SignInAndSignUp from "./pages/signInAndSignUp/signInAndSignUp.component";
@@ -26,7 +26,7 @@ class App extends React.Component {
           });
         });
       }
-      //setCurrentUser(userAuth);
+      setCurrentUser(userAuth);
     });
   }
 
@@ -42,12 +42,24 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
-          <Route path="/signin" component={SignInAndSignUp} />
+          <Route
+            exact
+            path="/signin"
+            render={() =>
+              this.props.currentUser ? <Redirect to="/" /> : <SignInAndSignUp />
+            }
+          />
         </Switch>
       </div>
     );
   }
 }
+
+// Need user reducer from state here in order to know if user is logged in to
+// redirect from sign in page
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+});
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
@@ -56,6 +68,6 @@ const mapDispatchToProps = dispatch => ({
 // Passing null as the first argument because we don't need to matchStateToProps
 // since we don't need currentUser here
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App);
