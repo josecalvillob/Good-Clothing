@@ -7,6 +7,7 @@ const CollectionPreview = ({ title, items }) => (
     <h1 className="title">{title.toUpperCase()}</h1>
     <div className="preview">
       {items
+        // Only want to display th first 4 items
         .filter((item, idx) => idx < 4)
         .map(item => (
           <CollectionItem key={item.id} item={item} />
