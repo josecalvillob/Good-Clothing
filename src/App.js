@@ -8,6 +8,8 @@ import SignInAndSignUp from "./pages/signInAndSignUp/signInAndSignUp.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "./redux/user/user.selectors";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -57,8 +59,8 @@ class App extends React.Component {
 
 // Need user reducer from state here in order to know if user is logged in to
 // redirect from sign in page
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => ({
