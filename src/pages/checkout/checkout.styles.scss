@@ -1,21 +1,31 @@
-.cart-icon {
-  width: 45px;
-  height: 45px;
-  position: relative;
+.checkout-page {
+  width: 55%;
+  min-height: 90vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  margin: 50px auto 0;
 
-  .shopping-icon {
-    width: 24px;
-    height: 24px;
+  .checkout-header {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid darkgrey;
+
+    .header-block {
+      text-transform: capitalize;
+      width: 23%;
+
+      &:last-child {
+        width: 8%;
+      }
+    }
   }
 
-  .item-count {
-    position: absolute;
-    font-size: 10px;
-    font-weight: bold;
-    bottom: 12px;
+  .total {
+    margin-top: 30px;
+    margin-left: auto;
+    font-size: 36px;
   }
 }
