@@ -25,11 +25,11 @@ const Header = ({ currentUser, hidden }) => (
       {/* If user is logged in, show "Sign Out" else show "Sign In" */}
       {currentUser ? (
         <div className="option" onClick={() => auth.signOut()}>
-          Sign Out
+          SIGN OUT
         </div>
       ) : (
         <Link to="/signin" className="option">
-          Sign In
+          SIGN IN
         </Link>
       )}
       <CartIcon />
