@@ -13,11 +13,13 @@ const buttonStyles = css`
 `;
 
 const invertedButtonStyles = css`
-  background-color: #4285f4;
-  color: white;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 
   &:hover {
-    background-color: #357ae8;
+    background-color: black;
+    color: white;
     border: none;
   }
 `;
